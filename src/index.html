@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-tr from-green-400 to-sky-600">
+    <div class="flex flex-col space-y-3 h-screen items-center justify-center">
+      <div
+        id="square"
+        class="bg-red-400 p-5 w-1/2 h-1/2 rounded border border-2 border-black"
+      ></div>
+      <h1 class="font-bold">Mande mensagem mudando cor</h1>
+    </div>
+    <script>
+      (function () {
+        const square = document.getElementById("square");
+        let ws;
+
+        function readBlob(blob) {
+          let reader = new FileReader();
+          reader.onload = () => {
+            let value = reader.result;
+            changeColor(value);
+          };
+
+          reader.readAsText(blob);
+        }
+
+        function changeColor(msg) {
+          switch (msg) {
+            case "red": {
+              square.style.backgroundColor = "red";
+              break;
+            }
+            case "blue": {
+              square.style.backgroundColor = "blue";
+              break;
+            }
+            case "green": {
+              square.style.backgroundColor = "green";
+              break;
+            }
+            case "yellow": {
+              square.style.backgroundColor = "yellow";
+              break;
+            }
+            default:
+              square.style.backgroundColor = "white";
+              break;
+          }
+        }
+        function init() {
+          if (ws) {
+            ws.onerror = ws.onopen = ws.onclose = null;
+            ws.close();
+          }
+
+          ws = new WebSocket("ws://localhost:8080");
+          ws.onopen = () => {
+            console.log("Conectado");
+          };
+          ws.onmessage = ({ data }) => {
+            readBlob(data);
+          };
+          ws.onclose = () => {
+            ws = null;
+          };
+        }
+        init();
+      })();
+      // document.getElementById("square").style.backgroundColor = "lightgreen"
+    </script>
+  </body>
+</html>

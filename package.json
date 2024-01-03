@@ -2,6 +2,7 @@
   "name": "calamity-web",
   "version": "0.0.0",
   "scripts": {
+    "start": "node src/server.js",
     "res:build": "rescript",
     "res:clean": "rescript clean",
     "res:dev": "rescript build -w"
@@ -13,7 +14,9 @@
   "license": "MIT",
   "dependencies": {
     "@rescript/core": "^0.6.0",
-    "rescript": "10.1",
+    "express": "^4.18.2",
+    "http": "0.0.1-security",
+    "rescript": "~10.1.0",
     "ws": "^8.16.0"
   }
 }
