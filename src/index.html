@@ -23,6 +23,7 @@
           let reader = new FileReader();
           reader.onload = () => {
             let value = reader.result;
+            console.log("VALOR ", value)
             changeColor(value);
           };
 
@@ -63,6 +64,7 @@
             console.log("Conectado");
           };
           ws.onmessage = ({ data }) => {
+            
             readBlob(data);
           };
           ws.onclose = () => {
