@@ -1,21 +1,4 @@
-# ReScript Project Template
+# Calamity Web
 
-The only official ReScript starter template.
-
-## Installation
-
-```sh
-npm install
-```
-
-## Build
-
-- Build: `npm run res:build`
-- Clean: `npm run res:clean`
-- Build & watch: `npm run res:dev`
-
-## Run
-
-```sh
-node src/Demo.bs.js
-```
+This is a on going web socket project for the Calamity Gaming group. 
+The idea is a websocket server that would update an live stream
